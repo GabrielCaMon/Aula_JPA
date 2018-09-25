@@ -14,8 +14,14 @@ public class DatabaseGen {
 		EntityManager em = factory.createEntityManager();
 
 		em.getTransaction().begin();
+		
 		Produto produto = new Produto(null,"IphoneX",6900.0);
 		em.persist(produto);
+		
+		Fabricante fabricante = new Fabricante(null,"Apple","California");
+		fabricante.getProduto().add(produto);
+		produto.setFabricante(fabricante);
+		em.persist(fabricante);
 		
 		em.getTransaction().commit();
 
