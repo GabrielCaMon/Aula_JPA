@@ -17,7 +17,10 @@ public class Fabricante {
 	private Integer id;
 	private String nome;
 	private String sede;
-	@OneToMany
+	
+	// CascadeType pode ser CascadeType.ALL (cascade de tudo)
+	//eager traz tudo de uma vez
+	@OneToMany(mappedBy="fabricante", cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)// se não colocar fetch por padrão, fica lazy
 	private List<Produto> produto = new ArrayList<>();
 	
 

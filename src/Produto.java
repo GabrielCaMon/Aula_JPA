@@ -8,12 +8,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.ManyToAny;
+
 
 @Entity
 @Table(name="TB_PROD")
@@ -39,6 +40,7 @@ public class Produto {
 	private Categoria categoria;
 	
 	@ManyToOne
+	@JoinColumn(name="fabricante_id", referencedColumnName="id")
 	private Fabricante fabricante;
 	
 	public Produto() {
